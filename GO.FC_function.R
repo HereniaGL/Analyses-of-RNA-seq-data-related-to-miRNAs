@@ -1,6 +1,6 @@
 # GO.FC function ----------------------------------------------------------
 
-BiNGO_output <- read.csv("RNAseq_data.csv", 
+BiNGO_output <- read.csv("DEG_data.csv", 
                          +     sheet = "Hoja1")
 colnames(BiNGO_output) <- c("GO_ID","GO_Description","p-val","Corrected_p-val","Cluster_frequency","Total_frequency","Genes")
 
@@ -26,11 +26,11 @@ GO_analysis <-
       genes <- unique(unlist(strsplit(genes, " ")))
       l <- c()
       for (i in 1:length(genes)) {
-        l <- c(l, grep(genes[i], RNAseq_data$ID))
+        l <- c(l, grep(genes[i], DEG_data$ID))
       }
       l <- unique(l)
       l
-      GO <- RNAseq_data[l, ]
+      GO <- DEG_data[l, ]
       GO_2 <- data.frame(matrix(0,ncol=(length(unlist(allbp))), nrow=length(l)))
       colnames(GO_2) <- unlist(allbp)
       GO <- cbind(GO, GO_2)
