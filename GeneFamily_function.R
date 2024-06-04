@@ -25,10 +25,10 @@ GeneFamily_analysis <-
       }
       length(genes)
       for (i in 1:length(genes)) {
-        l <- c(l, grep(genes[i], RNAseq_data$ID))
+        l <- c(l, grep(genes[i], DEG_data$ID))
       }
       l <- unique(l)
-      GeneFamily <- RNAseq_data[l, ]
+      GeneFamily <- DEG_data[l, ]
       l <- nrow(GeneFamily)
       go_number <- c()
       for (i in 1:l) {
