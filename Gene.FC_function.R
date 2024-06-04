@@ -4,9 +4,9 @@ Gene_analysis <-
   function(Gene_ID="ARR") {
     l <- c()
     for (i in 1:length(Gene_ID)) {
-      l <- c(l, grep(Gene_ID[i], RNAseq_data$ID))
-      l <- c(l, grep(Gene_ID[i], RNAseq_data$external_gene_name))
-      l <- c(l, grep(Gene_ID[i], RNAseq_data$tair_symbol))
+      l <- c(l, grep(Gene_ID[i], DEG_data$ID))
+      l <- c(l, grep(Gene_ID[i], DEG_data$external_gene_name))
+      l <- c(l, grep(Gene_ID[i], DEG_data$tair_symbol))
     }
     l <- unique(l)
     l
@@ -14,7 +14,7 @@ Gene_analysis <-
       print("Gene(s) not found")
     } else {
       Gene <- data.frame()
-      Gene <- RNAseq_data[l, ]
+      Gene <- DEG_data[l, ]
       if (nrow(Gene)>1) {
         l <- nrow(Gene)
         go_number <- c()
